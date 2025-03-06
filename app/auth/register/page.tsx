@@ -2,6 +2,9 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
+import Link from "next/link";
+import Image from "next/image";
+import { assets } from "@/assets/assets";
 
 
 export default function Register() {
@@ -45,42 +48,51 @@ export default function Register() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <form onSubmit={handleRegister} className="p-6 bg-white rounded-lg shadow-md">
-                <h2 className="mb-4 text-xl font-bold">Register</h2>
-                <input
-                    onChange={onChangeHandler}
-                    type="text"
-                    placeholder="Full Name"
-                    value={data.name}
-                    name="name"
-                    className="w-full px-3 py-2 mb-2 border rounded"
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={data.email}
-                    onChange={onChangeHandler}
-                    className="w-full px-3 py-2 mb-2 border rounded"
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={data.password}
-                    onChange={onChangeHandler}
-                    className="w-full px-3 py-2 mb-2 border rounded"
-                    required
-                />
-                <button type="submit" className="w-full py-2 mt-2 text-white bg-blue-500 rounded" disabled={loading}>
-                    {loading ? "Registering..." : "Register"}
-                </button>
-            </form>
-            <ToastContainer theme="dark" />
+        <div className='py-5 px-5 md:px-12 lg:px-28'>
+            <div className='flex justify-between items-center'>
+                <Link href="/">
+                    <Image src={assets.logo} width={180} alt="" className='w-[130px]' />
+                </Link>
+                <Link href="/auth/login" className='font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid border-black shadow-[-7px_7px_0px_#000000]'>Login</Link>
+            </div>
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
 
+                <form onSubmit={handleRegister} className="p-6 bg-white rounded-lg shadow-md">
+                    <h2 className="mb-4 text-xl font-bold">Register</h2>
+                    <input
+                        onChange={onChangeHandler}
+                        type="text"
+                        placeholder="Full Name"
+                        value={data.name}
+                        name="name"
+                        className="w-full px-3 py-2 mb-2 border rounded"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={data.email}
+                        onChange={onChangeHandler}
+                        className="w-full px-3 py-2 mb-2 border rounded"
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={data.password}
+                        onChange={onChangeHandler}
+                        className="w-full px-3 py-2 mb-2 border rounded"
+                        required
+                    />
+                    <button type="submit" className="w-full py-2 mt-2 text-white bg-blue-500 rounded" disabled={loading}>
+                        {loading ? "Registering..." : "Register"}
+                    </button>
+                </form>
+                <ToastContainer theme="dark" />
+
+            </div>
         </div>
     );
 }
